@@ -1,15 +1,33 @@
 import { IsString, IsNotEmpty, MinLength } from 'class-validator';
 import { ApiProperty } from '@nestjs/swagger';
-import { IAuthRequest } from './auth.types';
+import { ILoginRequest, IRegisterRequest } from './auth.types';
 
-export class AuthRequest implements IAuthRequest {
-  @IsNotEmpty()
+export class LoginRequest implements ILoginRequest {
+  @ApiProperty({
+    description: 'User login',
+    required: true,
+    type: 'string',
+    example: 'joedoe',
+  })
+  login: string;
+
+  @ApiProperty({
+    description: 'User password',
+    required: true,
+    type: 'string',
+    example: '123123123',
+  })
+  password: string;
+}
+
+export class RegisterRequest implements IRegisterRequest {
   @IsString()
   @MinLength(6)
   @ApiProperty({
     description: 'User login',
     required: true,
     type: 'string',
+    example: 'joedoe',
   })
   login: string;
 
@@ -20,6 +38,7 @@ export class AuthRequest implements IAuthRequest {
     description: 'User password',
     required: true,
     type: 'string',
+    example: '123123123',
   })
   password: string;
 }

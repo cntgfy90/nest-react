@@ -1,17 +1,18 @@
 import {MigrationInterface, QueryRunner, Table} from 'typeorm';
-import { AUTH_TABLES } from '../src/auth/auth.constants';
+import { USERS_TABLES } from '../src/shared/common.constants';
 
 export class UsersTable1591738321412 implements MigrationInterface {
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.createTable(new Table({
-            name: AUTH_TABLES.USERS,
+            name: USERS_TABLES.USERS,
             columns: [
                 {
                     name: 'id',
-                    type: 'uuid',
+                    type: 'integer',
                     isPrimary: true,
                     isGenerated: true,
+                    generationStrategy: 'increment',
                 },
                 {
                     name: 'username',
@@ -25,12 +26,24 @@ export class UsersTable1591738321412 implements MigrationInterface {
                     type: 'text',
                     isNullable: false,
                 },
+                {
+                    name: 'createdAt',
+                    type: 'time without time zone',
+                    isNullable: false,
+                    default: 'CURRENT_TIMESTAMP',
+                },
+                {
+                    name: 'updatedAt',
+                    type: 'time without time zone',
+                    isNullable: false,
+                    default: 'CURRENT_TIMESTAMP',
+                },
             ],
         }));
     }
 
     public async down(queryRunner: QueryRunner): Promise<void> {
-        await queryRunner.dropTable(AUTH_TABLES.USERS);
+        await queryRunner.dropTable(USERS_TABLES.USERS);
     }
 
 }

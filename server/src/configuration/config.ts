@@ -9,4 +9,8 @@ export default (): Record<string, unknown> => ({
     port: process.env.DB_PORT,
     database: process.env.DB_NAME,
   },
+  auth: {
+    jwtSecret: process.env.JWT_SECRET,
+    jwtExpiresIn: process.env.JWT_EXPIRES_IN,
+  },
 });
