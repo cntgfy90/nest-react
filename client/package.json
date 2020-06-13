@@ -55,5 +55,5 @@
     "prettier": "^2.0.5",
     "redux-devtools-extension": "^2.13.8"
   },
-  "proxy": "http://localhost:3005"
+  "proxy": "http://localhost:3002"
 }

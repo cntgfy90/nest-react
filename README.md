@@ -25,7 +25,7 @@ $ yarn install
 
 2. Fill up env variables for database, server and client.
 
-###### Note: Client's env variables needed here just for convenient managing. They are still included in resulting bundle. There is not need to change the after the copy from `.env.example`
+###### Note: Client's env variables needed here just for convenient managing. They are still included in resulting bundle. There is not need to change the after the copy from `.env.example`. Also make sure you define `proxy` in client's `package.json` the same as your actual server url
 
 You can leave database env variables as it is. Default user has name `postgres`, password `postgres` and it creates database `nest-react`.
 
@@ -56,25 +56,25 @@ $ docker-compose up
 
 ###### Note: You should have the same env variables for database `user`, `password` and `database name` for both databse and server.
 
-4. Start server
+4. Run migrations
+
+```bash
+$ cd ./server
+$ yarn typeorm:cli migration:run
+```
+
+5. Start server
 
 ```bash
 $ cd ./server
 $ yarn start:dev
 ```
 
-5. Start client
+6. Start client
 
 ```bash
 $ cd ./client
 $ yarn start
-```
-
-6. Run migrations
-
-```bash
-$ cd ./server
-$ yarn typeorm:cli migration:run
 ```
 
 7. Go to localhost link for UI. Default port is `3000`.
