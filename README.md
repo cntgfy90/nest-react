@@ -23,7 +23,7 @@ $ cd ./client
 $ yarn install
 ```
 
-2. Fill up env variables for database (run docker-compose), server and client.
+2. Fill up env variables for database, server and client.
 
 ###### Note: Client's env variables needed here just for convenient managing. They are still included in resulting bundle. There is not need to change the after the copy from `.env.example`
 
