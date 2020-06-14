@@ -3,7 +3,6 @@ import {
   IRegisterData,
   ILoginData,
   IAuthError,
-  IAuthVerifiction,
   ISignUpResponse,
 } from '../types/auth.types';
 import { ThunkResult, ThunkDispatch } from '../types/common.types';
@@ -102,43 +101,6 @@ export function register(
       dispatch(authSuccess());
 
       return result;
-    } catch (e) {
-      dispatch(authError(e));
-    }
-  };
-}
-
-export function verifyToken(accessToken: string): ThunkResult<Promise<void>> {
-  return async (dispatch: ThunkDispatch) => {
-    try {
-      dispatch(authRequest());
-      console.log(verifyToken, 'verifyTOken');
-      const params: { [key: string]: string } = {
-        accessToken,
-      };
-
-      const query = Object.keys(params)
-        .map(
-          (k: string) =>
-            encodeURIComponent(k) + '=' + encodeURIComponent(params[k])
-        )
-        .join('&');
-
-      const response = await fetch(
-        `${process.env.REACT_APP_MAIN_API_URL}/verifyToken?${query}`
-      );
-      const result = await response.json();
-
-      if (result?.message) {
-        throw result;
-      }
-
-      const auth: IAuthData = {
-        payload: result as IAuthVerifiction,
-        accessToken,
-      };
-
-      dispatch(authSuccess(auth));
     } catch (e) {
       dispatch(authError(e));
     }

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import Loader from '../components/Loader';
-import { IAuthVerifiction, IAuthData } from '../types/auth.types';
+import { IAuthVerification, IAuthData } from '../types/auth.types';
 import store from '../store';
 import { AUTH_ACTION_TYPES } from '../actions/auth';
 import { LOCAL_STORAGE_AUTH } from '../constants';
@@ -43,7 +43,7 @@ export default function withAuth(ComponentToProtect: React.ComponentType) {
           .join('&');
 
         const response = await fetch(
-          `http://localhost:3000/verifyToken?${query}`
+          `${process.env.REACT_APP_MAIN_API_URL}/verifyToken?${query}`
         );
         const result = await response.json();
 
@@ -52,7 +52,7 @@ export default function withAuth(ComponentToProtect: React.ComponentType) {
         }
 
         const auth: IAuthData = {
-          payload: result as IAuthVerifiction,
+          payload: result as IAuthVerification,
           accessToken: accessToken as string,
         };
 

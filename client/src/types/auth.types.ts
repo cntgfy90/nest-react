@@ -16,7 +16,7 @@ export interface IAuthUser {
   updatedAt: string;
 }
 
-export interface IAuthVerifiction extends IAuthUser {
+export interface IAuthVerification extends IAuthUser {
   iet: string;
   exp: string;
 }
