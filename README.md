@@ -29,18 +29,11 @@ $ yarn install
 
 You can leave database env variables as it is. Default user has name `postgres`, password `postgres` and it creates database `nest-react`.
 
-Database (PostgreSQL)
-```bash
-$ cd ./server
-$ cp .env.db.example .env.db
-```
-
-Server
+Server and Database
 ```bash
 $ cd ./server
 $ cp .env.example .env
 ```
-Default port exposed from docker container with PostgreSQL is `35432`, set it in `./server/.env` for `DB_PORT`
 
 Client
 ```bash
@@ -51,6 +44,7 @@ $ cp .env.example .env
 3. Run database
 
 ```bash
+$ cd ./server
 $ docker-compose up
 ```
 
