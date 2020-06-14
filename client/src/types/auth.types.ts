@@ -1,5 +1,4 @@
-import { ThunkResult, IError } from './common.types';
-import { IAppState } from '../reducers';
+import { IError } from './common.types';
 
 export interface IAuthRequest {
   login: string;
@@ -24,15 +23,6 @@ export interface IAuthVerification extends IAuthUser {
 export interface IAuthData {
   accessToken?: string;
   payload?: IAuthUser;
-}
-
-/**
- * Auth actions whuch are used in connected components directly.
- */
-export interface IAuthOperations {
-  register?: (registerData: IRegisterData) => ThunkResult<IAppState>;
-  login?: (loginData: ILoginData) => ThunkResult<IAppState>;
-  verify?: (accessToken: string) => ThunkResult<IAppState>;
 }
 
 export type IAuthError = IError;
