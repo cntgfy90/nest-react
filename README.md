@@ -25,7 +25,7 @@ $ yarn install
 
 2. Fill up env variables for database, server and client.
 
-###### Note: Client's env variables needed here just for convenient managing. They are still included in resulting bundle. There is not need to change the after the copy from `.env.example`. Also make sure you define `proxy` in client's `package.json` the same as your actual server url
+###### Note: Client's env variables needed here just for convenient managing. They are still included in resulting bundle. No need to change them after the copy from `.env.example`. Also make sure you define `proxy` in client's `package.json` the same as your actual server url
 
 You can leave database env variables as it is. Default user has name `postgres`, password `postgres` and it creates database `nest-react`.
 
